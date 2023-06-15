@@ -16,7 +16,7 @@ class UrlLink < ApplicationRecord
   def check_if_url_valid?
     return if original_url =~ URI::DEFAULT_PARSER.make_regexp
 
-    errors.add(:original_url, 'is not a valid URL.')
+    errors.add(:base, 'The URL you entered is not a valid.')
     throw :abort
   end
 end

@@ -1,3 +1,3 @@
 # README
 
-Sample rails app for projects.
+A simple yet super-effective URL shortener app.

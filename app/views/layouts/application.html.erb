@@ -7,10 +7,12 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%# <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body class='h-100'>
-    <%= yield %>
+    <%= link_to '< Back', :back || root_path, class: 'position-absolute', style: 'top: 20px; left: 20px;' %>
+    <div class='container h-100'>
+      <%= yield %>
+    </div>
   </body>
 </html>

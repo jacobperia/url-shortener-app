@@ -1,0 +1,17 @@
+<div class='d-flex flex-column align-items-center justify-content-center h-100'>
+  <div class='h3 mb-4'>Welcome to Jacob's URL shortener!!!</div>
+  <%= form_for UrlLink.new, url: new_short_link_path, method: :post, html: { class: 'w-100 mb-5' } do |f| %>
+    <div class='d-flex justify-content-center'>
+      <%= f.url_field :original_url, placeholder: 'Enter URL to shorten...', class: 'w-50 me-3', required: true %>
+      <%= button_tag('Shorten', type: "submit", class: 'btn btn-primary') %>
+    </div>
+  <% end %>
+  <div class='h5 mt-5'>All ShortURLs</div>
+  <% UrlLink.find_each do |url| %>
+    <div class='d-flex justify-content-center mb-3'>
+      <%= link_to redirect_url(url), redirect_path(url), target: '_blank' %>
+      <%= link_to 'Info', info_path(url), class: 'ms-3 py-0 btn btn-sm btn-secondary' %>
+    </div>
+  <% end %>
+  <div class='position-absolute text-muted' style='bottom: 20px;'>© 2023 Jacob's Apps</div>
+</div>

@@ -1,0 +1,26 @@
+<div class='d-flex flex-column align-items-center justify-content-center text-center h-100'>
+  <div class='h1 mb-2'>Your ShortURL:</div>
+  <div class='h3 mb-5'>
+    <%= link_to redirect_url(@url_link), redirect_path(@url_link), target: '_blank' %>
+  </div>
+  <div class='h3'>Analytics</div>
+  <div class='w-50 mt-4'>
+    <% if @url_link.ip_address_users.empty? %>
+      <div class='h4'>No of uses: 0</div>
+    <% else %>
+      <div class='d-flex justify-content-between'>
+        <div class='h5'>IP Address</div>
+        <div class='h5'>Number of uses</div>
+      </div>
+      <% @url_link.ip_address_users.each do |user| %>
+        <div class='h6'>
+          <div class='d-flex justify-content-between'>
+            <div><%= user.ip_address %></div>
+            <div><%= user.number_of_visits %></div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class='position-absolute text-muted' style='bottom: 50px;'>Please refresh page after a visit to see changes.</div>
+</div>

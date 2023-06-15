@@ -5,6 +5,11 @@
       <%= f.url_field :original_url, placeholder: 'Enter URL to shorten...', class: 'w-50 me-3', required: true %>
       <%= button_tag('Shorten', type: "submit", class: 'btn btn-primary') %>
     </div>
+    <% if @url_link.errors.any? %>
+      <% @url_link.errors.full_messages.each do |error| %>
+        <p class='text-danger text-center'><%= error %></p>
+      <% end %>
+    <% end %>
   <% end %>
   <div class='h5 mt-5'>All ShortURLs</div>
   <% UrlLink.find_each do |url| %>
